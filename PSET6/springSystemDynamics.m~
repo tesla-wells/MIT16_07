@@ -1,0 +1,12 @@
+clear all;
+close all;
+clc;
+
+
+k = 1;
+h_0 = 1;
+L0 = sqrt(2);
+
+energy = @(x) (0.5.*k(sqrt(h_0.^2 + x.^2) - L0).^2);
+
+fplot(energy, [-2 2])
