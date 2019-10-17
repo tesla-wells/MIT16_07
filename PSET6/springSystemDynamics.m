@@ -60,6 +60,13 @@ xlabel('Time')
 ylabel('Total Energy')
 title('Time vs Energy')
 
+figure(6)
+hold on
+xlabel('Distance')
+ylabel('Velocity')
+title('Phase diagrams')
+hold off
+
 for n=1 : length(potential_x_0)
     x_0 = [potential_x_0(n);v_0];
 
@@ -94,11 +101,14 @@ end
 xd_01 = [1.62, 0];
 xd_02 = [1.63, 0];
 
-[td1, xd1_vec] = ode45(@(t, x_v) springSystem(t, x_v, m, k, h_0, L0, .01), [0 50], xd_01);
-[td2, xd2_vec] = ode45(@(t, x_v) springSystem(t, x_v, m, k, h_0, L0, .01), [0 50], xd_02);
+[td1, xd1_vec] = ode45(@(t, x_v) springSystem(t, x_v, m, k, h_0, L0, .01), [0 200], xd_01);
+[td2, xd2_vec] = ode45(@(t, x_v) springSystem(t, x_v, m, k, h_0, L0, .01), [0 200], xd_02);
 
-plot
-
+figure(6)
+hold on
+plot(xd1_vec(:,1), xd1_vec(:,2))
+plot(xd2_vec(:,1), xd2_vec(:,2))
+hold off
 
 
 
